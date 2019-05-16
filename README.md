@@ -2,7 +2,7 @@ Oracle Task Manager  - A simple tool to run parallel tasks Oracle Database with 
 
 1. Quick Start
 
-Download the lates release
+Download the latest release
 Run install_taskmanager.sql script from SQL Plus (alternatively manually create objects from Procedures, Tables and Packages directories)
 Create task definition
 Start tasks execution
@@ -11,7 +11,7 @@ Start tasks execution
 
 2.1. Tables
 
-TASKMANAGER_INSTANCES - Instances of Taskmanager executions. Taskmanager is executing tasks from last instance, old instances are keept for evidence.
+TASKMANAGER_INSTANCES - Instances of Taskmanager executions. Taskmanager is executing tasks from last instance, old instances are kept for evidence.
 TASKMANAGER_TASKDEFS - List of task definitions, base on this definition new tasks are added when instance is created with the API.
 TASKMANAGER_TASKS - List of all tasks, for all instances. Each task can be in status NEW, PROCESSING, COMPLETED or ERROR.
 TASKMANAGER_LOGS - Logs from taskmanager executions.
@@ -23,13 +23,13 @@ SLEEP - Procedure (in Java) created as a workarround, in case DBMS_LOCK.sleep is
 2.3 Configuration
 
 When creating new instance following parameters might be set:
-STOPONERROR - Indicates if all tasks should be stopped when error ocure in one of the tasks. 
-Possible values: 	Y - All running tasks will be completed, no new tasks should be strated.
+STOPONERROR - Indicates if all tasks should be stopped when error occur in one of the tasks. 
+Possible values: 	Y - All running tasks will be completed, no new tasks should be started.
 			N - All running and new tasks from current group will be started. No new tasks from next groups will be started.
 RETRYCOUNT - Indicates how many times task should be retried in case of failure. (some specific tasks might fail when running in the same group in other tasks. When retrying few times they will complete successfully).					
 
 2.3. API
-All API procuderes are available in the taskmanager package.
+All API procedures are available in the taskmanager package.
 
 PROCEDURE rcreateinstance(p_stoponerror varchar2 default 'Y')  - creates new instance (TASKMANAGER_INSTANCES) and tasks (TASKMANAGER_TASKS) base on the definition from TASKMANAGER_TASKDEFS table.
 
@@ -91,4 +91,5 @@ select * from taskmanager_tasks where status = 'COMPLETED';
 
 select status, count(*) from taskmanager_tasks group by status;
 
-4. Copyright and lidence
+4. Copyright and license
+   Please check LICENSE file
